@@ -1,0 +1,14 @@
+blink_symbol_level=0
+chrome_pgo_phase=0
+enable_iterator_debugging=false
+enable_swiftshader=true
+fatal_linker_warnings=false
+ffmpeg_branding="Chrome"
+is_clang=true
+is_debug=false
+is_official_build=true
+proprietary_codecs=true
+symbol_level=0
+target_cpu="x64"
+use_gnome_keyring=false
+use_sysroot=false

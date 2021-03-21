@@ -1,0 +1,86 @@
+--- a/chrome/test/BUILD.gn
++++ b/chrome/test/BUILD.gn
+@@ -6839,26 +6642,6 @@ if (!is_fuchsia && !is_android) {
+   }
+ }
+ 
+-if (is_win) {
+-  fuzzer_test("safe_browsing_binary_feature_extractor_fuzzer") {
+-    sources = [
+-      "../common/safe_browsing/binary_feature_extractor.cc",
+-      "../common/safe_browsing/binary_feature_extractor_fuzzer.cc",
+-      "../common/safe_browsing/binary_feature_extractor_win.cc",
+-    ]
+-    deps = [
+-      "//base",
+-      "//components/safe_browsing/core:csd_proto",
+-      "//crypto",
+-    ]
+-    libs = [ "wintrust.lib" ]
+-
+-    # Directory contains useful and non-useful files. Don't worry about
+-    # non-useful since they are eliminated during pruning.
+-    seed_corpus = "data/safe_browsing/download_protection/"
+-  }
+-}
+-
+ if (is_win) {
+   test("pixel_browser_tests") {
+     sources = [ "pixel/demo/skia_gold_demo_pixeltest.cc" ]
+--- a/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
++++ b/chrome/browser/ui/webui/settings/settings_localized_strings_provider.cc
+@@ -104,7 +104,6 @@
+ #endif
+ 
+ #if defined(OS_WIN)
+-#include "chrome/browser/safe_browsing/chrome_cleaner/srt_field_trial_win.h"
+ #include "device/fido/win/webauthn_api.h"
+ 
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
+--- a/chrome/browser/ui/webui/settings/settings_ui.cc
++++ b/chrome/browser/ui/webui/settings/settings_ui.cc
+@@ -80,9 +80,6 @@
+ #include "ui/resources/grit/webui_resources.h"
+ 
+ #if defined(OS_WIN)
+-#include "chrome/browser/safe_browsing/chrome_cleaner/chrome_cleaner_controller_win.h"
+-#include "chrome/browser/safe_browsing/chrome_cleaner/srt_field_trial_win.h"
+-#include "chrome/browser/ui/webui/settings/chrome_cleanup_handler_win.h"
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
+ #include "chrome/browser/ui/webui/settings/incompatible_applications_handler_win.h"
+ #include "chrome/browser/win/conflicts/incompatible_applications_updater.h"
+@@ -232,10 +229,6 @@ SettingsUI::SettingsUI(content::WebUI* w
+   AddSettingsPageUIHandler(std::make_unique<PrintingHandler>());
+ #endif
+ 
+-#if defined(OS_WIN)
+-  AddSettingsPageUIHandler(std::make_unique<ChromeCleanupHandler>(profile));
+-#endif  // defined(OS_WIN)
+-
+ #if defined(OS_WIN) && BUILDFLAG(GOOGLE_CHROME_BRANDING)
+   bool has_incompatible_applications =
+       IncompatibleApplicationsUpdater::HasCachedApplications();
+--- a/chrome/browser/prefs/browser_prefs.cc
++++ b/chrome/browser/prefs/browser_prefs.cc
+@@ -368,3 +368,2 @@
+ #if defined(OS_WIN)
+-#include "chrome/browser/component_updater/sw_reporter_installer_win.h"
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
+@@ -374,5 +373,2 @@
+ #endif  // BUILDFLAG(GOOGLE_CHROME_BRANDING)
+-#include "chrome/browser/safe_browsing/chrome_cleaner/chrome_cleaner_controller_win.h"
+-#include "chrome/browser/safe_browsing/chrome_cleaner/settings_resetter_win.h"
+-#include "chrome/browser/safe_browsing/settings_reset_prompt/settings_reset_prompt_prefs_manager.h"
+ #endif
+@@ -1089,11 +1082,7 @@ void RegisterProfilePrefs(user_prefs::Pr
+ #endif  // defined(OS_CHROMEOS)
+ 
+ #if defined(OS_WIN)
+-  component_updater::RegisterProfilePrefsForSwReporter(registry);
+   NetworkProfileBubble::RegisterProfilePrefs(registry);
+-  safe_browsing::SettingsResetPromptPrefsManager::RegisterProfilePrefs(
+-      registry);
+-  safe_browsing::PostCleanupSettingsResetter::RegisterProfilePrefs(registry);
+ #endif
+ 
+ #if defined(OS_WIN) || defined(OS_MAC) || \

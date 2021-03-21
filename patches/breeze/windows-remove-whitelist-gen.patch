@@ -1,0 +1,11 @@
+--- a/build/toolchain/gcc_toolchain.gni
++++ b/build/toolchain/gcc_toolchain.gni
+@@ -24,7 +24,7 @@
+   # Currently works only on some platforms and enabled by default for official
+   # builds. Requires debug info.
+   enable_resource_allowlist_generation =
+-      is_official_build &&
++      false && is_official_build &&
+       # Don't enable for Android-on-Chrome OS so that they can build with
+       # symbol_level=0 without this failing (crbug.com/891164).
+       (target_os == "android" || target_os == "win")
