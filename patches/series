@@ -1,6 +1,4 @@
-inox-patchset/chromium-skia-harmony.patch
 inox-patchset/fix-cfi-failures-with-unbundled-libxml.patch
-#debian_buster/fixes/gpu-timeout.patch
 ungoogled-chromium/windows/windows-disable-reorder-fix-linking.patch
 ungoogled-chromium/windows/windows-fix-missing-include-es_parser_adts-cc.patch
 ungoogled-chromium/windows/windows-disable-win-build-output.patch
@@ -12,10 +10,14 @@ ungoogled-chromium/windows/windows-disable-encryption.patch
 ungoogled-chromium/windows/windows-disable-machine-id.patch
 ungoogled-chromium/windows/windows-compile-mini-installer.patch
 ungoogled-chromium/windows/windows-no-unknown-warnings.patch
-
-#breeze/windows-fix-crx-installing.patch
 breeze/windows-appdata-path.patch
-#breeze/windows-fix-showIncludes-bs.patch
 breeze/windows-remove-whitelist-gen.patch
-breeze/windows-fix-rc.patch
+ungoogled-chromium/windows/windows-fix-showIncludes.patch
+ungoogled-chromium/windows/windows-fix-rc.patch
 ungoogled-chromium/windows/windows-disable-event-log.patch
+ungoogled-chromium/windows/windows-fix-clang-format-exe.patch
+ungoogled-chromium/windows/windows-disable-rlz.patch
+ungoogled-chromium/windows/windows-fix-command-ids.patch
+ungoogled-chromium/windows/windows-disable-download-warning-prompt.patch
+ungoogled-chromium/windows/windows-fix-python-error.patch
+ungoogled-chromium/windows/windows-fix-rc-terminating-error.patch

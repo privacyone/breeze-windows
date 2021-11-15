@@ -12,7 +12,7 @@
    gn_build_dir = os.path.join(out_dir, 'gn_build')
    ninja_binary = os.environ.get('NINJA', 'ninja')
  
-@@ -123,11 +123,11 @@ def main(argv):
+@@ -124,11 +124,11 @@ def main(argv):
        os.path.join(BOOTSTRAP_DIR, 'last_commit_position.h'), gn_build_dir)
    if options.jobs:
      subprocess.check_call(
@@ -36,13 +36,3 @@
    description = CXX $out
    deps = msvc
  
---- a/build/config/compiler/BUILD.gn
-+++ b/build/config/compiler/BUILD.gn
-@@ -696,6 +696,6 @@
-   # jumps. Turn it off by default and enable selectively for targets where it's
-   # beneficial.
--  if (use_lld && !enable_call_graph_profile_sort) {
-+  if (use_lld && !enable_call_graph_profile_sort && false) {
-     if (is_win) {
-       ldflags += [ "/call-graph-profile-sort:no" ]
-     } else {

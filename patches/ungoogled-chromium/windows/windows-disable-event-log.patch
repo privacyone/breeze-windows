@@ -3,8 +3,8 @@
 
 --- a/chrome/common/BUILD.gn
 +++ b/chrome/common/BUILD.gn
-@@ -424,7 +424,6 @@ static_library("common") {
-   if (is_win) {
+@@ -431,7 +431,6 @@ static_library("common") {
+     ]
      deps += [
        "//chrome/chrome_elf:chrome_elf_main_include",
 -      "//chrome/common/win:eventlog_messages",
@@ -13,7 +13,7 @@
  
 --- a/chrome/common/logging_chrome.cc
 +++ b/chrome/common/logging_chrome.cc
-@@ -62,7 +62,6 @@
+@@ -63,7 +63,6 @@
  #include <initguid.h>
  #include "base/logging_win.h"
  #include "base/syslog_logging.h"
@@ -21,13 +21,13 @@
  #include "chrome/install_static/install_details.h"
  #endif
  
-@@ -367,11 +366,6 @@ void InitChromeLogging(const base::Comma
+@@ -368,11 +367,6 @@ void InitChromeLogging(const base::Comma
  #if defined(OS_WIN)
    // Enable trace control and transport through event tracing for Windows.
    LogEventProvider::Initialize(kChromeTraceProviderName);
 -
 -  // Enable logging to the Windows Event Log.
--  SetEventSource(base::UTF16ToASCII(
+-  SetEventSource(base::WideToASCII(
 -                     install_static::InstallDetails::Get().install_full_name()),
 -                 BROWSER_CATEGORY, MSG_LOG_MESSAGE);
  #endif

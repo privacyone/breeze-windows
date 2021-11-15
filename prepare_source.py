@@ -184,7 +184,6 @@ def _prepare_src():
         urlsubcache
     )
     
-    _copy_files('core/stable_src/src')
     _copy_files('idl_gen_files/src')
 
 def main():
