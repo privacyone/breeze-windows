@@ -6,6 +6,6 @@
    enable_resource_allowlist_generation =
 -      is_official_build &&
 +      false && is_official_build &&
-       # Don't enable for Android-on-Chrome OS so that they can build with
-       # symbol_level=0 without this failing (crbug.com/891164).
+       # Don't enable for Android-on-Chrome OS.
        (target_os == "android" || target_os == "win")
+ }
