@@ -1,12 +1,10 @@
 chrome_pgo_phase=0
-enable_swiftshader=false
+enable_swiftshader=true
 ffmpeg_branding="Chrome"
 is_clang=true
-is_component_build=false
 is_debug=false
 is_official_build=true
 proprietary_codecs=true
 target_cpu="x64"
 use_gnome_keyring=false
 use_sysroot=false
-dcheck_always_on=false
