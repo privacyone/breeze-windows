@@ -43,6 +43,7 @@ Run `cmd.exe` as administrator, change the current directory to the one in which
 ##### Cloning the repository
 ```cmd
 git clone https://github.com/privacyone/breeze-windows.git
+cd breeze-windows
 git submodule update --recursive --init
 ```
 This will make a local main repository with all needed subrepositories.
