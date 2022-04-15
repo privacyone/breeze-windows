@@ -49,9 +49,9 @@ This will make a local main repository with all needed subrepositories.
 ##### Preparing chromium source files
 
 ```
-py prepare_build.py
+py prepare_source.py
 ```
-This will download and unpack archived chromium source files and required tools, `prune_binaries` and apply `domain_substitution` and `url_substitution` on the unpacked code. If no errors are encountered, this script should be run only once. If it fails, run the `remove_src.bat` script and wait for it to finish before trying `prepare_build.py` again.
+This will download and unpack archived chromium source files and required tools, `prune_binaries` and apply `domain_substitution` and `url_substitution` on the unpacked code. If no errors are encountered, this script should be run only once. If it fails, run the `remove_src.bat` script and wait for it to finish before trying `prepare_source.py` again.
 
 ##### Applying patches
 ```
